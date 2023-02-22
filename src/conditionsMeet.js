@@ -32,6 +32,8 @@ export default function conditionsMeet(condition, formData) {
       return refCondition.every(rule => conditionsMeet(rule, formData));
     } else if (ref === NOT) {
       return !conditionsMeet(refCondition, formData);
+    } else if (ref === "contains") {
+      return conditionsMeet(refCondition, formData);
     } else {
       let refVal = selectRef(ref, formData);
       if (Array.isArray(refVal)) {
